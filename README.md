@@ -27,7 +27,8 @@ To do so, follow these steps:
 * Switch to the **Eclipse's Dart perspective**
 * Right click on **public/dart/pubspec.yaml**
 * Select **Pub build** option
-* Update references to Dart files, for example URLs to scripts. For example, "dart/web/play-with-dart.dart" -> "dart/build/web/play-with-dart.dart"
+* Update references to Dart files like URLs. 
+  * For example, *dart/web/play-with-dart.dart* &#8594; *dart/build/web/play-with-dart.dart*
 
 It is important to remember that you will need to rebuild the project each time you update a Dart file and want to test the modifications into another browser than **Dartium**.
 
@@ -45,7 +46,7 @@ Troubleshooting
 
 [Dart Plugin](https://www.dartlang.org/tools/eclipse-plugin/) seems to be quite resource-consuming. You may then spot several freeze while using **Eclipse**. By default, only 512Mo are allocated to it. To increase this limit, open with your favorite editor *path/to/eclipse/eclipse.ini* and replace the default value into the following line by at least **1024** for 32-bit Eclipse (**2048** for 64-bit):
 ```
--Xmx**512**m
+-Xmx512m
 ```
 
 License
