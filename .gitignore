@@ -1,10 +1,14 @@
+bin
+dist
 logs
 project/project
 project/target
+public/dart/packages
+public/dart/build
+public/dart/.pub
 target
 tmp
 .history
-dist
 /.idea
 /*.iml
 /out
@@ -13,8 +17,5 @@ dist
 /.project
 /RUNNING_PID
 /.settings
-public/dart/packages
-public/dart/build
-public/dart/.pub
 /.cache
 /*~

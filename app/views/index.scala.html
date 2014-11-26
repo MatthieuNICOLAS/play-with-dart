@@ -6,24 +6,13 @@
   <head>
     <meta charset="utf-8">
     <title>@message</title>
-    <link rel="stylesheet" href="@routes.Assets.at("dart/build/web/dart.css")">
+    <link rel="stylesheet" href="@routes.Assets.at("/public", "stylesheets/style.css")">
   </head>
   
   <body>
-    <h1 id="header">Dart</h1>
-    
-    <p>Hello world using AngularDart!</p>
-    
-    <div>
-      <label>Name:</label>
-      <input type="text" ng-model="yourName" placeholder="Enter a name here">
-      <hr>
-      <h1 ng-cloak>Hello {{yourName}}!</h1>
-    </div>
+    <recipe-book></recipe-book>
   
+    <script type="application/dart" src="@routes.Assets.at("/public", "dart/build/web/main.dart")"></script>
+    <script src="@routes.Assets.at("/public", "dart/build/web/packages/browser/dart.js")"></script>
   </body>
-
-  <script type="application/dart" src="@routes.Assets.at("dart/build/web/dart.dart")"></script>
-  <script src="@routes.Assets.at("dart/build/web/packages/browser/dart.js")"></script>
-
 </html>
