@@ -3,21 +3,27 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>@message</title>
-        <link rel="stylesheet" href="@routes.Assets.at("dart/build/web/dart.css")">
-    </head>
-    <body>
-        <h1>Dart</h1>
+  <head>
+    <meta charset="utf-8">
+    <title>@message</title>
+    <link rel="stylesheet" href="@routes.Assets.at("dart/build/web/dart.css")">
+  </head>
+  
+  <body>
+    <h1 id="header">Dart</h1>
+    
+    <p>Hello world using AngularDart!</p>
+    
+    <div>
+      <label>Name:</label>
+      <input type="text" ng-model="yourName" placeholder="Enter a name here">
+      <hr>
+      <h1 ng-cloak>Hello {{yourName}}!</h1>
+    </div>
+  
+  </body>
 
-        <p>Hello world from Dart!</p>
+  <script type="application/dart" src="@routes.Assets.at("dart/build/web/dart.dart")"></script>
+  <script src="@routes.Assets.at("dart/build/web/packages/browser/dart.js")"></script>
 
-        <div id="sample_container_id">
-            <p id="sample_text_id">Click me!</p>
-        </div>
-
-        <script type="application/dart" src="@routes.Assets.at("dart/build/web/dart.dart")"></script>
-        <script src="@routes.Assets.at("dart/build/web/packages/browser/dart.js")"></script>
-    </body>
 </html>
