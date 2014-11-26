@@ -7,28 +7,46 @@ Getting Started
 ---------------
 
 First, [install Play Framework](https://www.playframework.com/documentation/2.4.x/Installing).
-Then, you have to add to Eclipse the [Dart Plugin](https://www.dartlang.org/tools/eclipse-plugin/).
+Then, you have to add to **Eclipse** the [Dart Plugin](https://www.dartlang.org/tools/eclipse-plugin/).
 
 Now you have to clone the repository:
 ```
 git clone https://github.com/MatthieuNICOLAS/play-with-dart.git
 ```
 
-Import it to Eclipse. Before running the application, you have to compile the Dart files (only compatible with the browser Dartium) to produce the Javascript files (compatible with all browsers).
-To do so, you need to: 
-* Switch to the Eclipse's Dart perspective
-* Right click on *public/dart/pubspec.yaml*
-* Select *Pub build* option
-
-It is important to remember that you will need to rebuild the project each time you want to test some changes into the Dart files.
-
-Finally, to run the application, use the following commands:
+Import it to **Eclipse**. You may now run the application using the following commands:
 ```
 cd path/to/play-with-dart
 activator run
 ```
 
-You can then access to the homepage at <http://localhost:9000>
+To access to your application, browse to <http://localhost:9000>
+But depending on your browser, you may need to build the Dart files before. Indeed, Dart is only compatible with the browser Dartium.
+To make it compatible with all browsers, you have to compile the Dart files. 
+To do so, follow these steps:
+* Switch to the **Eclipse's Dart perspective**
+* Right click on **public/dart/pubspec.yaml**
+* Select **Pub build** option
+* Update references to Dart files, for example URLs to scripts. For example, "dart/web/play-with-dart.dart" -> "dart/build/web/play-with-dart.dart"
+
+It is important to remember that you will need to rebuild the project each time you update a Dart file and want to test the modifications into another browser than **Dartium**.
+
+Tips
+----
+
+To not have to compile Dart files at each change, you may want to test your application using **Dartium**. But, if you use **Chromium** as a browser usually, you may encounter conflicts while trying to run **Dartium**.
+Declare the following alias to launch it easily:
+```
+alias dartium='DART_FLAGS="--checked" ~/path/to/dart/chromium/chrome --remote-debugging-port=59509 --user-data-dir=~/.dartium --enable-experimental-web-platform-features --enable-html-imports --no-first-run --no-default-browser-check --no-process-singleton-dialog chrome://version/ http://localhost:9000'
+```
+
+Troubleshooting
+---------------
+
+[Dart Plugin](https://www.dartlang.org/tools/eclipse-plugin/) seems to be quite resource-consuming. You may then spot several freeze while using **Eclipse**. By default, only 512Mo are allocated to it. To increase this limit, open with your favorite editor *path/to/eclipse/eclipse.ini* and replace the default value into the following line by at least **1024** for 32-bit Eclipse (**2048** for 64-bit):
+```
+-Xmx**512**m
+```
 
 License
 -------
