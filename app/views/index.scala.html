@@ -1,0 +1,23 @@
+@(message: String)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>@message</title>
+        <link rel="stylesheet" href="@routes.Assets.at("dart/build/web/dart.css")">
+    </head>
+    <body>
+        <h1>Dart</h1>
+
+        <p>Hello world from Dart!</p>
+
+        <div id="sample_container_id">
+            <p id="sample_text_id">Click me!</p>
+        </div>
+
+        <script type="application/dart" src="@routes.Assets.at("dart/build/web/dart.dart")"></script>
+        <script src="@routes.Assets.at("dart/build/web/packages/browser/dart.js")"></script>
+    </body>
+</html>
