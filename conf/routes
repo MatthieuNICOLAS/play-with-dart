@@ -7,5 +7,4 @@ GET     /                                          controllers.Application.index
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /packages/play_with_dart/*file             controllers.Assets.at(path="/public/dart/lib", file)
-GET     /images/*file                              controllers.Assets.at(path="/public/images/", file)
 GET     /assets/*file                              controllers.Assets.at(path="/public", file)
