@@ -16,6 +16,8 @@ class RecipeBookComponent {
   Recipe selectedRecipe;
   List<Recipe> recipes;
 
+  String nameFilterString = "";
+  
   RecipeBookComponent() {
     recipes = _loadData();
   }
@@ -35,6 +37,10 @@ class RecipeBookComponent {
          80);
    }
    return tooltip[recipe]; // recipe.tooltip
+  }
+  
+  void clearFilters() {
+    nameFilterString = "";
   }
   
   List<Recipe> _loadData() {
