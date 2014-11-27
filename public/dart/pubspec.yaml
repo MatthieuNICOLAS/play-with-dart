@@ -2,6 +2,7 @@ name: play_with_dart
 description: A sample web application
 dependencies:
   browser: any
+  web_components: ">=0.8.0 <0.9.0"
   angular: ">=1.0.0 <2.0.0"
 transformers:
 - angular:

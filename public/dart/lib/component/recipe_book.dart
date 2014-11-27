@@ -2,6 +2,7 @@ library recipe_book_component;
 
 import 'package:angular/angular.dart';
 import 'package:play_with_dart/tooltip/tooltip.dart' show TooltipModel;
+import 'package:play_with_dart/recipe.dart';
 
 /* The selector field defines the CSS selector that will trigger the component. It can be any valid
  * CSS selector which does not cross element boundaries.
@@ -16,6 +17,18 @@ class RecipeBookComponent {
   Recipe selectedRecipe;
   List<Recipe> recipes;
 
+  // Filter box
+  final categoryFilterMap = <String, bool>{
+    'Appetizers': false,
+    'Salads': false,
+    'Soups': false,
+    'Main Dishes': false,
+    'Side Dishes': false,
+    'Desserts': false
+  };
+  Iterable<String> get categories => categoryFilterMap.keys;
+  
+  
   String nameFilterString = "";
   
   RecipeBookComponent() {
@@ -40,43 +53,33 @@ class RecipeBookComponent {
   }
   
   void clearFilters() {
+    categoryFilterMap.clear();
     nameFilterString = "";
   }
   
   List<Recipe> _loadData() {
     return [
-      new Recipe('My Appetizer','Appetizers',
+      new Recipe('1', 'My Appetizer','Appetizers',
           ["Ingredient 1", "Ingredient 2"],
           "Some Directions", 1, "/assets/images/fonzie1.jpg"),
-      new Recipe('My Salad','Salads',
+      new Recipe('2', 'My Salad','Salads',
           ["Ingredient 1", "Ingredient 2"],
           "Some Directions", 3, "/assets/images/fonzie2.jpg"),
-      new Recipe('My Soup','Soups',
+      new Recipe('3', 'My Soup','Soups',
           ["Ingredient 1", "Ingredient 2"],
           "Some Directions", 4, "/assets/images/fonzie1.jpg"),
-      new Recipe('My Main Dish','Main Dishes',
+      new Recipe('4', 'My Main Dish','Main Dishes',
           ["Ingredient 1", "Ingredient 2"],
           "Some Directions", 2, "/assets/images/fonzie2.jpg"),
-      new Recipe('My Side Dish','Side Dishes',
+      new Recipe('5', 'My Side Dish','Side Dishes',
           ["Ingredient 1", "Ingredient 2"],
           "Some Directions", 3, "/assets/images/fonzie1.jpg"),
-      new Recipe('My Awesome Dessert','Desserts',
+      new Recipe('6', 'My Awesome Dessert','Desserts',
           ["Ingredient 1", "Ingredient 2"],
           "Some Directions", 5, "/assets/images/fonzie2.jpg"),
-      new Recipe('My So-So Dessert','Desserts',
+      new Recipe('7', 'My So-So Dessert','Desserts',
           ["Ingredient 1", "Ingredient 2"],
           "Some Directions", 3, "/assets/images/fonzie1.jpg"),
     ];
   }
-}
-
-class Recipe {
-  final String name;
-  final String category;
-  final List<String> ingredients;
-  final String directions;
-  final String imgUrl;
-  int rating;
-
-  Recipe(this.name, this.category, this.ingredients, this.directions, this.rating, this.imgUrl);
 }

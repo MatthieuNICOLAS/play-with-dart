@@ -6,12 +6,22 @@
         <input id="name-filter" type="text"
             ng-model="nameFilterString">
       </div>
+      <div>
+			    <label>Filter recipes by category
+			        <span ng-repeat="category in categories">
+			          <label>
+			            <input type="checkbox"
+			                   ng-model="categoryFilterMap[category]">{{category}}
+			          </label>
+			        </span>
+			    </label>
+			</div>
       <input type="button" value="Clear Filters" ng-click="clearFilters()">
 </div>
 
 <ul>
   <li class="pointer"
-      ng-repeat="recipe in recipes | orderBy: 'name' | filter: {name:nameFilterString}"
+      ng-repeat="recipe in recipes | orderBy: 'name' | filter: {name:nameFilterString} | categoryfilter:categoryFilterMap"
       ng-click="selectRecipe(recipe)">
     <span tooltip="tooltipForRecipe(recipe)">
       <rating max-rating="5" rating="recipe.rating"></rating>
