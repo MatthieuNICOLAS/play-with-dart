@@ -14,25 +14,26 @@ import 'package:play_with_dart/recipe.dart';
     selector: 'recipe-book',
     templateUrl: 'recipe_book.html')
 class RecipeBookComponent {
-  Recipe selectedRecipe;
-  List<Recipe> recipes;
+  static const String LOADING_MESSAGE = "Loading recipe book...";
+  static const String ERROR_MESSAGE = "Sorry! The cook stepped out of the "
+      "kitchen and took the recipe book with him!";
+  final Http _http;
+  
+  String message = LOADING_MESSAGE;
+  bool recipesLoaded = false;
+  bool categoriesLoaded = false;
+  
+  List<Recipe> recipes = [];
 
   // Filter box
-  final categoryFilterMap = <String, bool>{
-    'Appetizers': false,
-    'Salads': false,
-    'Soups': false,
-    'Main Dishes': false,
-    'Side Dishes': false,
-    'Desserts': false
-  };
+  final categoryFilterMap = <String, bool>{};
   Iterable<String> get categories => categoryFilterMap.keys;
-  
-  
   String nameFilterString = "";
   
-  RecipeBookComponent() {
-    recipes = _loadData();
+  Recipe selectedRecipe;
+  
+  RecipeBookComponent(this._http) {
+    _loadData();
   }
 
   void selectRecipe(Recipe recipe) {
@@ -53,33 +54,36 @@ class RecipeBookComponent {
   }
   
   void clearFilters() {
-    categoryFilterMap.clear();
+    categoryFilterMap.keys.forEach((f) => categoryFilterMap[f] = false);
     nameFilterString = "";
   }
   
-  List<Recipe> _loadData() {
-    return [
-      new Recipe('1', 'My Appetizer','Appetizers',
-          ["Ingredient 1", "Ingredient 2"],
-          "Some Directions", 1, "/assets/images/fonzie1.jpg"),
-      new Recipe('2', 'My Salad','Salads',
-          ["Ingredient 1", "Ingredient 2"],
-          "Some Directions", 3, "/assets/images/fonzie2.jpg"),
-      new Recipe('3', 'My Soup','Soups',
-          ["Ingredient 1", "Ingredient 2"],
-          "Some Directions", 4, "/assets/images/fonzie1.jpg"),
-      new Recipe('4', 'My Main Dish','Main Dishes',
-          ["Ingredient 1", "Ingredient 2"],
-          "Some Directions", 2, "/assets/images/fonzie2.jpg"),
-      new Recipe('5', 'My Side Dish','Side Dishes',
-          ["Ingredient 1", "Ingredient 2"],
-          "Some Directions", 3, "/assets/images/fonzie1.jpg"),
-      new Recipe('6', 'My Awesome Dessert','Desserts',
-          ["Ingredient 1", "Ingredient 2"],
-          "Some Directions", 5, "/assets/images/fonzie2.jpg"),
-      new Recipe('7', 'My So-So Dessert','Desserts',
-          ["Ingredient 1", "Ingredient 2"],
-          "Some Directions", 3, "/assets/images/fonzie1.jpg"),
-    ];
+  void _loadData() {
+    recipesLoaded = false;
+    categoriesLoaded = false;
+    
+    _http.get('/api/recipes')
+        .then((HttpResponse response) {
+          print(response.data);
+          recipes = response.data.map((d) => new Recipe.fromJson(d)).toList();
+          recipesLoaded = true;
+        })
+        .catchError((e) {
+          recipesLoaded = false;
+          message = ERROR_MESSAGE;
+        });
+    _http.get('/api/categories')
+        .then((HttpResponse response) {
+          print(response);
+          for (String category in response.data) {
+            categoryFilterMap[category] = false;
+          }
+          categoriesLoaded = true;
+        })
+        .catchError((e) {
+          print(e);
+          categoriesLoaded = false;
+          message = ERROR_MESSAGE;
+        });
   }
 }

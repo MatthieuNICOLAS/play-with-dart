@@ -5,6 +5,10 @@
 # Home page
 GET     /                                          controllers.Application.index
 
+# RESTful API
+GET     /api/recipes                               controllers.Application.listRecipes
+GET     /api/categories                            controllers.Application.listCategories
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /packages/play_with_dart/*file             controllers.Assets.at(path="/public/dart/lib", file)
 GET     /assets/*file                              controllers.Assets.at(path="/public", file)
