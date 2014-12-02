@@ -5,6 +5,7 @@ project/project
 project/target
 public/dart/packages
 public/dart/build
+public/dart/web/*.dart.*
 public/dart/.pub
 target
 tmp
@@ -18,5 +19,4 @@ tmp
 /RUNNING_PID
 /.settings
 /.cache
-/*.dart.*
 /?*~
