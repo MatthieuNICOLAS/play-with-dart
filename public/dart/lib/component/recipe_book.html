@@ -4,7 +4,7 @@
     </div>
     <div ng-switch-when="true">
       <h3>Recipe List</h3>
-      
+
       <div id="filters">
 	      <div>
 	        <label for="name-filter">Filter recipes by name</label>
@@ -23,7 +23,7 @@
 	      </div>
 	      <input type="button" value="Clear Filters" ng-click="clearFilters()">
 			</div> <!--  end filters -->
-			
+
 			<ul>
 			  <li class="pointer"
 			      ng-repeat="recipe in recipes | orderBy: 'name' | filter: {name:nameFilterString} | categoryfilter:categoryFilterMap"
@@ -49,12 +49,8 @@
 			    </ul>
 			  </div>
 			  <div><strong>Directions: </strong>{{selectedRecipe.directions}}</div>
-			</div>			
-			
+			</div>
+
     </div>
   </div>
 </body>
-
-
-
-

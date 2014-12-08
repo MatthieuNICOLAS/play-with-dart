@@ -1,12 +1,10 @@
 package models
 
-import controllers.Assets.Asset
-
 /**
  * @author matthieu
  */
-case class Recipe(id: String, name: String, category: String, 
-    ingredients: List[String], directions: String, 
+case class Recipe(id: String, name: String, category: String,
+    ingredients: List[String], directions: String,
     rating: Int, imgUrl: String);
 
 object Recipe {

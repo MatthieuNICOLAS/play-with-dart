@@ -7,14 +7,15 @@
     <meta charset="utf-8">
     <title>@message</title>
     <link rel="stylesheet" href="@routes.Assets.at("/public", "stylesheets/style.css")">
-    
+
     <script src="@routes.Assets.at("/public", "dart/packages/web_components/platform.js")"></script>
     <script src="@routes.Assets.at("/public", "dart/packages/web_components/dart_support.js")"></script>
   </head>
-  
+
   <body>
+    <editor></editor>
     <recipe-book></recipe-book>
-  
+    <script src="/assets/javascripts/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
     <script type="application/dart" src="@routes.Assets.at("/public", "dart/web/play-with-dart.dart")"></script>
     <script src="@routes.Assets.at("/public", "dart/packages/browser/dart.js")"></script>
   </body>

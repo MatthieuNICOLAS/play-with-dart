@@ -9,3 +9,4 @@ transformers:
     html_files:
         - lib/component/recipe_book.html
         - lib/component/rating.html
+        - lib/component/editor.html
